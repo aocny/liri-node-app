@@ -10,7 +10,7 @@ var fs = require("fs");
 
 // Store all of the arguments in an array
 var nodeCommand = process.argv [2]
-var search = process.argv [3]
+var search = process.argv.slice(3).join(" ")
 
 function bandcall(artist) {
     var URL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
@@ -119,21 +119,25 @@ if (nodeCommand == "movie-this"){
 } else if (nodeCommand == "spotify-this-song"){
     spotifySong (search)
  }else if (nodeCommand == "do-what-it-says"){
-     spotifySong (search);
+     dothis (search);
 }
 
 
+    function dothis (){
+     
+    
     fs.readFile("random.txt", "utf8", function(error, data){
         // If the code experiences any errors it will log the error to the console.
       if (error) {
         return console.log(error);
       } 
       
-    //   console.log(data)
+      console.log(data)
 
       var dataArr = data.split(",");
 
-    }
+    })
+}   
    
 
 
@@ -162,4 +166,4 @@ if (nodeCommand == "movie-this"){
 //   });
 
 
-    )
+    
